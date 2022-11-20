@@ -6,16 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class login_MainActivity extends AppCompatActivity {
+public class register_MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
-    }
-    public void goToFirst(View view){
-        Intent IrALogin = new Intent(this,first_MainActivity.class);
-        startActivity(IrALogin);
+        setContentView(R.layout.register_activity);
     }
 
 }
