@@ -19,4 +19,9 @@ public class first_MainActivity extends AppCompatActivity {
         startActivity(IrALogin);
     }
 
+    public void goToRegister(View view){
+        Intent IrALogin = new Intent(this,register_MainActivity.class);
+        startActivity(IrALogin);
+    }
+
 }
