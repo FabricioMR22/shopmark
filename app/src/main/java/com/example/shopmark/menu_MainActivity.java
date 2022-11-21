@@ -6,21 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class login_MainActivity extends AppCompatActivity {
+public class menu_MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.menu_activity);
     }
-    public void goToMenu(View view){
-        Intent IrALogin = new Intent(this,menu_MainActivity.class);
-        startActivity(IrALogin);
-    }
+
     public void goToFirst(View view){
         Intent IrALogin = new Intent(this,first_MainActivity.class);
         startActivity(IrALogin);
     }
 
-
+    public void goToBuy(View view){
+        Intent IrALogin = new Intent(this,buy_MainActivity.class);
+        startActivity(IrALogin);
+    }
 }
