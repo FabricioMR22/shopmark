@@ -18,4 +18,9 @@ public class menu_MainActivity extends AppCompatActivity {
         Intent IrALogin = new Intent(this,first_MainActivity.class);
         startActivity(IrALogin);
     }
+
+    public void goToBuy(View view){
+        Intent IrALogin = new Intent(this,buy_MainActivity.class);
+        startActivity(IrALogin);
+    }
 }
