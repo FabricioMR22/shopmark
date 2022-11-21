@@ -11,6 +11,8 @@
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/drawable/custom_input.xml" value="0.3645" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/drawable/fondoa.xml" value="0.3675" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/drawable/fondob.xml" value="0.3645" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/drawable/ic_adelante.xml" value="0.3675" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/drawable/ic_iratras.xml" value="0.3675" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/drawable/ic_lock.xml" value="0.3645" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/drawable/ic_usuario.xml" value="0.3645" />
@@ -19,10 +21,12 @@
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/layout/buy_activity.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/layout/client_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/layout/first_activity.xml" value="0.33" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/layout/login_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/layout/menu_activity.xml" value="0.33" />
         <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/layout/register_activity.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/Shopmark/app/src/main/res/layout/store_house_activity.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
