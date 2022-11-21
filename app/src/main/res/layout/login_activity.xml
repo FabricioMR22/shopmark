@@ -73,16 +73,18 @@
         android:orientation="vertical"
         android:layout_weight="1"
         android:gravity="center">
+
         <Button
             android:id="@+id/button"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
+            android:background="@drawable/custom_button3"
             android:fontFamily="@font/sanssemibold"
+            android:onClick="goToMenu"
             android:text="INGRESAR"
             android:textSize="14sp"
-            android:textStyle="bold"
-            android:background="@drawable/custom_button3"/>
+            android:textStyle="bold" />
         <Button
             android:id="@+id/button2"
             android:layout_width="160dp"
