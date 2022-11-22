@@ -39,7 +39,7 @@
         android:layout_weight="1.1">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/txtUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_input"
@@ -52,7 +52,7 @@
             android:fontFamily="@font/sanssemibold"
             android:hint="Usuario" />
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/txtPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_input"
@@ -75,13 +75,13 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnLogin"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:background="@drawable/custom_button3"
             android:fontFamily="@font/sanssemibold"
-            android:onClick="goToMenu"
+            android:onClick="procesar"
             android:text="INGRESAR"
             android:textSize="14sp"
             android:textStyle="bold" />

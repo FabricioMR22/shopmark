@@ -25,12 +25,28 @@
         <activity
             android:name=".menu_MainActivity"
             android:exported="false" />
-        <activity
-            android:name=".register_MainActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".register_MainActivity"-->
+<!--            android:exported="false" -->
+<!--            />-->
         <activity
             android:name=".login_MainActivity"
             android:exported="false" />
+
+<!--        AGREGADO-->
+<!--        CLIENTES-->
+        <activity android:name=".cliente.register_MainActivity"></activity>
+        <activity android:name=".cliente.ClientesActivity"></activity>
+        <activity android:name=".cliente.CBuscasActivity"></activity>
+        <activity android:name=".cliente.menuClienteActivity"></activity>
+
+<!--        Productos-->
+        <activity android:name=".producto.RegistroProducto"></activity>
+        <activity android:name=".producto.ProductosActivity"></activity>
+        <activity android:name=".producto.PBuscasActivity"></activity>
+        <activity android:name=".producto.menuProductoActivity"></activity>
+        <!--        AGREGADO-->
+
         <activity
             android:name=".first_MainActivity"
             android:exported="true">
@@ -40,6 +56,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

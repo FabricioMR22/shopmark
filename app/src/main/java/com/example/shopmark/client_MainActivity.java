@@ -20,12 +20,12 @@ public class client_MainActivity extends AppCompatActivity {
     }
 
     public void goToMenu(View view){
-        Intent IrALogin = new Intent(this,menu_MainActivity.class);
+        Intent IrALogin = new Intent(this, menu_MainActivity.class);
         startActivity(IrALogin);
     }
 
     public void goToStoreHouse(View view){
-        Intent IrALogin = new Intent(this,store_house_MainActivity.class);
+        Intent IrALogin = new Intent(this, store_house_MainActivity.class);
         startActivity(IrALogin);
     }
 
