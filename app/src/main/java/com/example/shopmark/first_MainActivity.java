@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.shopmark.cliente.register_MainActivity;
+
 public class first_MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,7 +22,7 @@ public class first_MainActivity extends AppCompatActivity {
     }
 
     public void goToRegister(View view){
-        Intent IrALogin = new Intent(this,register_MainActivity.class);
+        Intent IrALogin = new Intent(this, register_MainActivity.class);
         startActivity(IrALogin);
     }
 

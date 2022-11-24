@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.shopmark.cliente.menuClienteActivity;
+import com.example.shopmark.producto.menuProductoActivity;
+
 public class menu_MainActivity extends AppCompatActivity {
 
     @Override
@@ -22,5 +25,15 @@ public class menu_MainActivity extends AppCompatActivity {
     public void goToBuy(View view){
         Intent IrALogin = new Intent(this,buy_MainActivity.class);
         startActivity(IrALogin);
+    }
+
+    public void clientes(View view){
+        Intent IrMenuCliente = new Intent(this, menuClienteActivity.class);
+        startActivity(IrMenuCliente);
+    }
+
+    public void productos(View view){
+        Intent IrMenuProducto = new Intent(this, menuProductoActivity.class);
+        startActivity(IrMenuProducto);
     }
 }
