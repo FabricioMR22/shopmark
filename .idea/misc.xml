@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Martinez/Desktop/maicol/shopmark-main/app/src/main/res/layout/activity_buscarcliente.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/activity_buscarcliente.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/activity_clientes.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/activity_menu_cliente.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/activity_menu_producto.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/activity_productos.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/activity_registroproducto.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/buy_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/item_producto.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/register_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Milagros/Desktop/APP MOVIL/shopmark-main/app/src/main/res/layout/store_house_activity.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

@@ -18,8 +18,6 @@ public class login_MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         enlazarControles();
-
-
     }
 
     private void enlazarControles() {
