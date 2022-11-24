@@ -3,6 +3,7 @@ package com.example.shopmark.ventas;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -12,6 +13,8 @@ import com.example.shopmark.Modelo.ClienteModelo;
 import com.example.shopmark.Modelo.ProductoModelo;
 import com.example.shopmark.R;
 import com.example.shopmark.base.TiendaDB;
+import com.example.shopmark.menu_MainActivity;
+import com.example.shopmark.producto.ProductosActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.DateFormat;
@@ -84,6 +87,8 @@ public class ventas_MainActivity extends AppCompatActivity {
             BuscarCliente();
         } else if (v.getId() == R.id.btnAgregar) {
             GenerarVenta();
+        } else if (v.getId() == R.id.btnVentas) {
+            MostrarVentas();
         }
     }
 
@@ -170,5 +175,12 @@ public class ventas_MainActivity extends AppCompatActivity {
         }
         return resp2;
     }
+
+    private void MostrarVentas() {
+        Intent mostrarVenta=new Intent(getApplicationContext(), registro_ventas_MainActivity.class);
+        startActivity(mostrarVenta);
+        finish();
+    }
+
 
 }

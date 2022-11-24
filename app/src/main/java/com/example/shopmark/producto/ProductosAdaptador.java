@@ -39,7 +39,6 @@ public class ProductosAdaptador extends RecyclerView.Adapter<ProductosAdaptador.
         void setOnclickListeners(){
             btnmEditar.setOnClickListener(this);
             btnmEliminar.setOnClickListener(this);
-
         }
 
         @Override
@@ -83,7 +82,9 @@ public class ProductosAdaptador extends RecyclerView.Adapter<ProductosAdaptador.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_producto,parent,false);
+        View view= LayoutInflater.from(
+                parent.getContext()).inflate(
+                        R.layout.item_producto,parent,false);
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
     }

@@ -194,15 +194,15 @@
             android:text="Agregar" />
 
         <Button
-            android:id="@+id/btnEliminar"
+            android:id="@+id/btnVentas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:layout_weight="1"
+            android:onClick="procesar"
             android:background="@drawable/custom_button3"
             android:fontFamily="@font/sanssemibold"
-            android:onClick="procesar"
-            android:text="Eliminar" />
+            android:text="REGISTRO VENTAS" />
     </LinearLayout>
 
 </LinearLayout>

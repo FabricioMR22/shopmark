@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.shopmark.Modelo.ClienteModelo;
 import com.example.shopmark.Modelo.ProductoModelo;
+import com.example.shopmark.Modelo.VentasModelo;
 import com.example.shopmark.cliente.register_MainActivity;
 
 import java.util.ArrayList;
@@ -462,5 +463,28 @@ public class TiendaDB extends SQLiteOpenHelper {
 //                    "VALUES('" + num + "','" + dni+ "','" + nombre+ "','" + apellido + "','" + correo + "', AES_ENCRYPT('"+ password +"','"+ password +"'))");
             bd.close();
         }
+    }
+
+    public void eliminarVENTAS(String codigo) {
+        SQLiteDatabase bd = getWritableDatabase();
+        if (bd != null) {
+            bd.execSQL("DELETE FROM VENTAS WHERE CODIGO='" + codigo + "'");
+            bd.close();
+        }
+    }
+
+    public List<VentasModelo> mostrarVENTAS() {
+        SQLiteDatabase bd = getReadableDatabase();
+        Cursor cursor = bd.rawQuery("SELECT CODIGO, CODIGOPRODUCTO," +
+                " NOMBREPRODUCTO, CODIGOCLIENTE, NOMBRECLIENTE, FECHA, CANTIDAD FROM VENTAS", null);
+        List<VentasModelo> ventas = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                ventas.add(new VentasModelo(cursor.getString(0), cursor.getString(1),
+                        cursor.getString(2), cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6)));
+            } while (cursor.moveToNext());
+
+        }
+        return ventas;
     }
 }
