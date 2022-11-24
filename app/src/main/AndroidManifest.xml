@@ -14,7 +14,10 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".registro_ventas_MainActivity"
+            android:name=".ventas.VentaBuscar_MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ventas.registro_ventas_MainActivity"
             android:exported="false" />
         <activity
             android:name=".ventas.ventas_MainActivity"

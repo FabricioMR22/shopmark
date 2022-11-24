@@ -4,6 +4,9 @@ public class VentasModelo {
     private String codigo, codigoProducto,nombreProducto,codigoCliente,nombreCliente, fecha;
     private int cantidad;
 
+    public VentasModelo(){
+    }
+
     public VentasModelo(String codigo, String codigoProducto,String nombreProducto, String codigoCliente, String nombreCliente, String fecha, int cantidad) {
         this.codigo = codigo;
         this.codigoProducto = codigoProducto;

@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.shopmark.cliente.menuClienteActivity;
 import com.example.shopmark.producto.menuProductoActivity;
+import com.example.shopmark.ventas.VentaBuscar_MainActivity;
 import com.example.shopmark.ventas.ventas_MainActivity;
 
 public class menu_MainActivity extends AppCompatActivity {
@@ -36,5 +37,10 @@ public class menu_MainActivity extends AppCompatActivity {
     public void productos(View view){
         Intent IrMenuProducto = new Intent(this, menuProductoActivity.class);
         startActivity(IrMenuProducto);
+    }
+
+    public void PantallaBuscar(View view) {
+        Intent BuscarConsulta=new Intent(this, VentaBuscar_MainActivity.class);
+        startActivity(BuscarConsulta);
     }
 }

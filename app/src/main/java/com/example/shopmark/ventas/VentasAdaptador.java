@@ -50,6 +50,28 @@ public class VentasAdaptador extends RecyclerView.Adapter<VentasAdaptador.ViewHo
 
         @Override
         public void onClick(View view) {
+            switch(view.getId()){
+                case R.id.btnmEditarV:
+                    Intent intent=new Intent(context, VentaBuscar_MainActivity.class);
+                    intent.putExtra("txtCodigoV",txtCodigoV.getText());
+                    intent.putExtra("txtCodigoP",txtCodigoP.getText());
+                    //intent.putExtra("txtNombreP",txtNombreP.getText());
+                    intent.putExtra("txtCodigoC",txtCodigoC.getText());
+                    //intent.putExtra("txtNombreC",txtCodigoC.getText());
+                    intent.putExtra("txtFecha",txtCodigoC.getText());
+                    //intent.putExtra("txtCantidad",txtCodigoC.getText());
+                    context.startActivity(intent);
+                    break;
+                case R.id.btnmEliminarV:
+                    String codigoB="";
+                    codigoB= txtCodigoV.getText().toString();
+                    if(codigoB.equals("")){
+
+                    }else {
+                        eliminarVenta(codigoB);
+                    }
+                    break;
+            }
 
         }
 

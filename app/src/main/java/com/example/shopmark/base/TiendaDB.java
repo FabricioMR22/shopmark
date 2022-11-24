@@ -487,4 +487,33 @@ public class TiendaDB extends SQLiteOpenHelper {
         }
         return ventas;
     }
+
+    public void buscarVENTAS(VentasModelo ventas, String codigo) {
+        SQLiteDatabase bd = getReadableDatabase();
+        Cursor cursor = bd.rawQuery(
+                "SELECT * FROM VENTAS WHERE CODIGO='"+codigo+"'", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                ventas.setCodigoProducto(cursor.getString(1));
+                ventas.setCodigoCliente(cursor.getString(3));
+                ventas.setFecha(cursor.getString(5));
+
+            } while (cursor.moveToNext());
+        }
+    }
+
+    public void editarVENTAS(String codigo, String CodigoP,String CodigoC, String Fecha) {
+        SQLiteDatabase bd = getWritableDatabase();
+        if (bd != null) {
+            bd.execSQL("UPDATE VENTAS SET CODIGOPRODUCTO='" +
+                    CodigoP + "', CODIGOCLIENTE='" + CodigoC + "',FECHA='" +
+                    Fecha + "' WHERE CODIGO='" + codigo + "'");
+            bd.close();
+        }
+    }
+
+
+
+
 }
