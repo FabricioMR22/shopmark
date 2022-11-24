@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.shopmark.Modelo.ClienteModelo;
 import com.example.shopmark.Modelo.ProductoModelo;
+import com.example.shopmark.Modelo.VentasModelo;
 import com.example.shopmark.cliente.register_MainActivity;
 
 import java.util.ArrayList;
@@ -17,13 +18,29 @@ public class TiendaDB extends SQLiteOpenHelper {
     private static final String NOMBRE_BD = "tienda.bd";
     private static final int VERSION_BD =1 ;
 
-
-
 //    private static final String TABLA_CLIENTES = "CREATE TABLE CLIENTES(CODIGO VARCHAR (40) PRIMARY KEY,DNI VARCHAR (40) NOT NULL,NOMBRE VARCHAR (40) NOT NULL, APELLIDO VARCHAR (40) NOT NULL, CORREO VARCHAR (40) NOT NULL, PASSWORD blob)";
-    private static final String TABLA_CLIENTES = "CREATE TABLE CLIENTES(CODIGO VARCHAR (6) PRIMARY KEY,DNI VARCHAR (40) NOT NULL,NOMBRE VARCHAR (40) NOT NULL, APELLIDO VARCHAR (40) NOT NULL, CORREO VARCHAR (40) UNIQUE NOT NULL, PASSWORD VARCHAR (40) NOT NULL)";
-    private static final String TABLA_PRODUCTOS = "CREATE TABLE PRODUCTOS(CODIGO VARCHAR (6) PRIMARY KEY,PRODUCTO VARCHAR (40) NOT NULL,STOCK INTEGER NOT NULL, PRECIO DECIMAL (9, 2) DEFAULT(0) NOT NULL)";
+    private static final String TABLA_CLIENTES = "CREATE TABLE CLIENTES(" +
+        "CODIGO VARCHAR (6) PRIMARY KEY," +
+        "DNI VARCHAR (40) NOT NULL," +
+        "NOMBRE VARCHAR (40) NOT NULL," +
+        " APELLIDO VARCHAR (40) NOT NULL," +
+        " CORREO VARCHAR (40) UNIQUE NOT NULL," +
+        " PASSWORD VARCHAR (40) NOT NULL)";
 
+    private static final String TABLA_PRODUCTOS = "CREATE TABLE PRODUCTOS(" +
+            "CODIGO VARCHAR (6) PRIMARY KEY," +
+            "PRODUCTO VARCHAR (40) NOT NULL," +
+            "STOCK INTEGER NOT NULL, " +
+            "PRECIO DECIMAL (9, 2) DEFAULT(0) NOT NULL)";
 
+    private static final String TABLA_VENTAS = "CREATE TABLE VENTAS(" +
+            "CODIGO VARCHAR (6) PRIMARY KEY," +
+            "CODIGOPRODUCTO VARCHAR (6) NOT NULL," +
+            "NOMBREPRODUCTO VARCHAR (40) NOT NULL," +
+            "CODIGOCLIENTE VARCHAR (6) NOT NULL, " +
+            "NOMBRECLIENTE VARCHAR (40) NOT NULL, " +
+            "FECHA VARCHAR (50) NOT NULL, " +
+            "CANTIDAD INTEGER NOT NULL)";
 
     public TiendaDB(Context context) {
         super(context, NOMBRE_BD, null, VERSION_BD);
@@ -33,8 +50,8 @@ public class TiendaDB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(TABLA_CLIENTES);
         sqLiteDatabase.execSQL(TABLA_PRODUCTOS);
+        sqLiteDatabase.execSQL(TABLA_VENTAS);
     }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
@@ -43,22 +60,29 @@ public class TiendaDB extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLA_PRODUCTOS);
         sqLiteDatabase.execSQL(TABLA_PRODUCTOS);
+
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLA_VENTAS);
+        sqLiteDatabase.execSQL(TABLA_VENTAS);
     }
 
     //CLIENTES INICIAL
 
-    public void agregarClientes(String codigo, String dni,String nombre, String apellido, String correo, String password) {
+    public void agregarClientes(
+            String codigo, String dni,String nombre,
+            String apellido, String correo, String password) {
+
         SQLiteDatabase bd1 = getReadableDatabase();
-        Cursor cursor = bd1.rawQuery("SELECT CODIGO FROM CLIENTES WHERE CODIGO=(SELECT MAX(CODIGO) FROM CLIENTES)", null);
+        Cursor cursor = bd1.rawQuery("SELECT CODIGO FROM CLIENTES" +
+                " WHERE CODIGO=(SELECT MAX(CODIGO) FROM CLIENTES)", null);
+
         String num="";
         if (cursor.moveToFirst()) {
             do {
                 num=cursor.getString(0);
-
             } while (cursor.moveToNext());
         }
 
-        /*Algoritmo para autogeneral el código*/
+        /*Algoritmo para autogenerar el código*/
         if(num.equals("")){
             num="C00001";
         }else{
@@ -340,5 +364,156 @@ public class TiendaDB extends SQLiteOpenHelper {
     }
 
     //PRODUCTOS FINAL
+
+    //VENTAS INICIO
+
+    public void agregarVENTAS(
+            String codigo, String codigoProducto,
+            String nombreProducto,String codigoCliente,
+            String nombreCliente, String fecha, int cantidad) {
+
+        SQLiteDatabase bd1 = getReadableDatabase();
+        Cursor cursor = bd1.rawQuery("SELECT CODIGO FROM VENTAS" +
+                " WHERE CODIGO=(SELECT MAX(CODIGO) FROM VENTAS)", null);
+
+        String num="";
+        if (cursor.moveToFirst()) {
+            do {
+                num=cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+
+        /*Algoritmo para autogenerar el código*/
+        if(num.equals("")){
+            num="V00001";
+        }else{
+            String sql_new1 = num;
+
+            //agregado abajo
+            String[] digito = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+            String[] digito2 = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+            //evalua el inicio del digito
+            int cont_digito = 0;
+            //nuevo digito solo número string
+            String new_ide = "";
+            //nuevo digito solo número int
+            int new_digito;
+
+            char[] caracteres = sql_new1.toCharArray();
+
+            for (int i = 0; i < sql_new1.length(); i++) {
+
+                String caracter_simplificado = String.valueOf(caracteres[i]);
+
+                for (int e = 0; e < digito.length; e++) {
+                    if (caracter_simplificado.equals(digito[e])) {
+                        cont_digito = 1;
+                    }
+                }
+
+                if (i == 5 && caracter_simplificado.equals("0")) {
+                    cont_digito = 1;
+                }
+
+                if (cont_digito == 1) {
+                    for (int p = 0; p < digito2.length; p++) {
+                        if (caracter_simplificado.equals(digito2[p])) {
+                            new_ide += caracter_simplificado;
+                        }
+                    }
+                }
+
+            }
+
+            if (!String.valueOf(new_ide).equalsIgnoreCase("99999")) {
+                new_digito = Integer.parseInt(new_ide) + 1;
+
+                //convertimos el nuevo número a String
+                String new_digito_string = "" + new_digito;
+
+                int tam_digito = new_digito_string.length();
+                int tam_anterior = sql_new1.length();
+                int tam_inicial = tam_anterior - tam_digito;
+
+                String final_ide = "";
+
+                for (int i = 0; i < tam_inicial; i++) {
+                    String caracter_simplificado2 = String.valueOf(caracteres[i]);
+                    final_ide += caracter_simplificado2;
+
+                }
+                num = final_ide + new_digito;
+            } else {
+                num = sql_new1;
+            }
+        }
+
+        SQLiteDatabase bd = getWritableDatabase();
+        if (bd != null) {
+// no funciona  bd.execSQL("INSERT INTO CLIENTES VALUES('" + num + "','" + dni+ "','" + nombre+ "','" + apellido + "','" + correo + "',AES_ENCRYPT('" + password + "','2022'))");
+            bd.execSQL("INSERT INTO VENTAS VALUES('" + num + "','" +
+                    codigoProducto + "','" +
+                    nombreProducto + "','" +
+                    codigoCliente + "','" +
+                    nombreCliente + "','" +
+                    fecha + "','" + cantidad + "')");
+
+//            String clave="hola";
+//            bd.execSQL("INSERT INTO CLIENTES(CODIGO,DNI,NOMBRE,APELLIDO,CORREO,PASSWORD)"+
+//                    "VALUES('" + num + "','" + dni+ "','" + nombre+ "','" + apellido + "','" + correo + "', AES_ENCRYPT('"+ password +"','"+ password +"'))");
+            bd.close();
+        }
+    }
+
+    public void eliminarVENTAS(String codigo) {
+        SQLiteDatabase bd = getWritableDatabase();
+        if (bd != null) {
+            bd.execSQL("DELETE FROM VENTAS WHERE CODIGO='" + codigo + "'");
+            bd.close();
+        }
+    }
+
+    public List<VentasModelo> mostrarVENTAS() {
+        SQLiteDatabase bd = getReadableDatabase();
+        Cursor cursor = bd.rawQuery("SELECT CODIGO, CODIGOPRODUCTO," +
+                " NOMBREPRODUCTO, CODIGOCLIENTE, NOMBRECLIENTE, FECHA, CANTIDAD FROM VENTAS", null);
+        List<VentasModelo> ventas = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                ventas.add(new VentasModelo(cursor.getString(0), cursor.getString(1),
+                        cursor.getString(2), cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getInt(6)));
+            } while (cursor.moveToNext());
+
+        }
+        return ventas;
+    }
+
+    public void buscarVENTAS(VentasModelo ventas, String codigo) {
+        SQLiteDatabase bd = getReadableDatabase();
+        Cursor cursor = bd.rawQuery(
+                "SELECT * FROM VENTAS WHERE CODIGO='"+codigo+"'", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                ventas.setCodigoProducto(cursor.getString(1));
+                ventas.setCodigoCliente(cursor.getString(3));
+                ventas.setFecha(cursor.getString(5));
+
+            } while (cursor.moveToNext());
+        }
+    }
+
+    public void editarVENTAS(String codigo, String CodigoP,String CodigoC, String Fecha) {
+        SQLiteDatabase bd = getWritableDatabase();
+        if (bd != null) {
+            bd.execSQL("UPDATE VENTAS SET CODIGOPRODUCTO='" +
+                    CodigoP + "', CODIGOCLIENTE='" + CodigoC + "',FECHA='" +
+                    Fecha + "' WHERE CODIGO='" + codigo + "'");
+            bd.close();
+        }
+    }
+
+
+
 
 }

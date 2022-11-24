@@ -1,6 +1,5 @@
 package com.example.shopmark.producto;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -87,9 +86,6 @@ public class PBuscasActivity extends AppCompatActivity{
             }
         }
     }
-
-
-
 
     public void BuscarProducto() {
         if(validarEliminarBuscar()) {

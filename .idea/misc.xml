@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/activity_buscarcliente.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/activity_buscarproducto.xml" value="0.25" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/activity_menu_producto.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/activity_productos.xml" value="0.287962962962963" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/activity_registroproducto.xml" value="0.287962962962963" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/activity_ventas_main.xml" value="0.33" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/item_producto.xml" value="0.33" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/item_ventas.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/menu_activity.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/register_activity.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/registro_ventas_activity.xml" value="0.33" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/store_house_activity.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Martinez/AndroidStudioProjects/shopmark/app/src/main/res/layout/ventabuscar_activity.xml" value="0.2" />
         <entry key="..\:/Users/Martinez/Desktop/maicol/shopmark-main/app/src/main/res/layout/activity_buscarcliente.xml" value="0.36666666666666664" />
       </map>
     </option>

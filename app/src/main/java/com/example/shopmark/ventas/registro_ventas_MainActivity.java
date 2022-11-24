@@ -1,4 +1,4 @@
-package com.example.shopmark.producto;
+package com.example.shopmark.ventas;
 
 import android.os.Bundle;
 
@@ -9,39 +9,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shopmark.R;
 import com.example.shopmark.base.TiendaDB;
 
-public class ProductosActivity extends AppCompatActivity {
-     private RecyclerView recyclerViewConsulta;
-     private ProductosAdaptador adaptadorConsulta;
+
+public class registro_ventas_MainActivity extends AppCompatActivity {
+    private RecyclerView recyclerViewConsulta;
+    private VentasAdaptador adaptadorConsulta;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_productos);
-
-        recyclerViewConsulta =(RecyclerView)findViewById(R.id.recyclerConsulta);
-        recyclerViewConsulta.setLayoutManager(new LinearLayoutManager(this));
-
-        TiendaDB productoDB=new TiendaDB(getApplicationContext());
-
-        adaptadorConsulta =new ProductosAdaptador(productoDB.mostrarProductos());
-        recyclerViewConsulta.setAdapter(adaptadorConsulta);
-
-
-
-    }
-    @Override
-    public void onResume() {
+        setContentView(R.layout.registro_ventas_activity);
 
         recyclerViewConsulta = (RecyclerView) findViewById(R.id.recyclerConsulta);
         recyclerViewConsulta.setLayoutManager(new LinearLayoutManager(this));
 
-        TiendaDB productoDB = new TiendaDB(getApplicationContext());
-
-        adaptadorConsulta = new ProductosAdaptador(productoDB.mostrarProductos());
+        TiendaDB ventasDB = new TiendaDB(getApplicationContext());
+        adaptadorConsulta = new VentasAdaptador(ventasDB.mostrarVENTAS());
         recyclerViewConsulta.setAdapter(adaptadorConsulta);
-        super.onResume();
 
     }
 
+    @Override
+    protected void onResume() {
+        recyclerViewConsulta = (RecyclerView) findViewById(R.id.recyclerConsulta);
+        recyclerViewConsulta.setLayoutManager(new LinearLayoutManager(this));
 
+        TiendaDB ventasDB = new TiendaDB(getApplicationContext());
+
+        adaptadorConsulta = new VentasAdaptador(ventasDB.mostrarVENTAS());
+        recyclerViewConsulta.setAdapter(adaptadorConsulta);
+        super.onResume();
+    }
 }
