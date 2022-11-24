@@ -17,16 +17,20 @@ public class TiendaDB extends SQLiteOpenHelper {
     private static final String NOMBRE_BD = "tienda.bd";
     private static final int VERSION_BD =1 ;
 
-
-
 //    private static final String TABLA_CLIENTES = "CREATE TABLE CLIENTES(CODIGO VARCHAR (40) PRIMARY KEY,DNI VARCHAR (40) NOT NULL,NOMBRE VARCHAR (40) NOT NULL, APELLIDO VARCHAR (40) NOT NULL, CORREO VARCHAR (40) NOT NULL, PASSWORD blob)";
     private static final String TABLA_CLIENTES = "CREATE TABLE CLIENTES(" +
         "CODIGO VARCHAR (6) PRIMARY KEY," +
         "DNI VARCHAR (40) NOT NULL," +
         "NOMBRE VARCHAR (40) NOT NULL," +
-        " APELLIDO VARCHAR (40) NOT NULL, CORREO VARCHAR (40) UNIQUE NOT NULL, PASSWORD VARCHAR (40) NOT NULL)";
-    private static final String TABLA_PRODUCTOS = "CREATE TABLE PRODUCTOS(CODIGO VARCHAR (6) PRIMARY KEY,PRODUCTO VARCHAR (40) NOT NULL,STOCK INTEGER NOT NULL, PRECIO DECIMAL (9, 2) DEFAULT(0) NOT NULL)";
+        " APELLIDO VARCHAR (40) NOT NULL," +
+        " CORREO VARCHAR (40) UNIQUE NOT NULL," +
+        " PASSWORD VARCHAR (40) NOT NULL)";
 
+    private static final String TABLA_PRODUCTOS = "CREATE TABLE PRODUCTOS(" +
+            "CODIGO VARCHAR (6) PRIMARY KEY," +
+            "PRODUCTO VARCHAR (40) NOT NULL," +
+            "STOCK INTEGER NOT NULL, " +
+            "PRECIO DECIMAL (9, 2) DEFAULT(0) NOT NULL)";
 
 
     public TiendaDB(Context context) {
@@ -39,7 +43,6 @@ public class TiendaDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(TABLA_PRODUCTOS);
     }
 
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLA_CLIENTES);
@@ -51,18 +54,22 @@ public class TiendaDB extends SQLiteOpenHelper {
 
     //CLIENTES INICIAL
 
-    public void agregarClientes(String codigo, String dni,String nombre, String apellido, String correo, String password) {
+    public void agregarClientes(
+            String codigo, String dni,String nombre,
+            String apellido, String correo, String password) {
+
         SQLiteDatabase bd1 = getReadableDatabase();
-        Cursor cursor = bd1.rawQuery("SELECT CODIGO FROM CLIENTES WHERE CODIGO=(SELECT MAX(CODIGO) FROM CLIENTES)", null);
+        Cursor cursor = bd1.rawQuery("SELECT CODIGO FROM CLIENTES" +
+                " WHERE CODIGO=(SELECT MAX(CODIGO) FROM CLIENTES)", null);
+
         String num="";
         if (cursor.moveToFirst()) {
             do {
                 num=cursor.getString(0);
-
             } while (cursor.moveToNext());
         }
 
-        /*Algoritmo para autogeneral el código*/
+        /*Algoritmo para autogenerar el código*/
         if(num.equals("")){
             num="C00001";
         }else{
@@ -345,4 +352,5 @@ public class TiendaDB extends SQLiteOpenHelper {
 
     //PRODUCTOS FINAL
 
+    
 }
