@@ -14,8 +14,13 @@ import com.example.shopmark.R;
 import com.example.shopmark.base.TiendaDB;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+
 public class ventas_MainActivity extends AppCompatActivity {
-    TextInputLayout txCodigo,txCodigoC;
+    TextInputLayout txCodigo,txCodigoC,txCantidad;
     TextView txProducto,txPrecio,txStock,txNombre,txDNI;
 
     @Override
@@ -68,6 +73,8 @@ public class ventas_MainActivity extends AppCompatActivity {
         txCodigoC = (TextInputLayout) findViewById(R.id.txCodigoC);
         txDNI = (TextView) findViewById(R.id.txDNI);
         txNombre = (TextView) findViewById(R.id.txNombre);
+
+        txCantidad = (TextInputLayout) findViewById(R.id.txCantidad);
     }
 
     public void procesar(View v) {
@@ -75,8 +82,56 @@ public class ventas_MainActivity extends AppCompatActivity {
             BuscarProducto();
         } else if (v.getId() == R.id.btnBuscar2) {
             BuscarCliente();
-        } else if (v.getId() == R.id.btnEliminar) {
+        } else if (v.getId() == R.id.btnAgregar) {
+            GenerarVenta();
+        }
+    }
 
+    private boolean validarOK() {
+        boolean resp2=true;
+
+        if(txCodigo.getEditText().getText().toString().isEmpty()){
+            txCodigo.setError("Es necesario codigo de producto");
+            resp2=false;
+        }
+        if(txCodigoC.getEditText().getText().toString().isEmpty()){
+            txCodigoC.setError("Es necesario codigo de cliente");
+            resp2=false;
+
+        }
+        if(txCantidad.getEditText().getText().toString().isEmpty()){
+            txCantidad.setError("Es necesario ingresar la cantidad");
+            resp2=false;
+
+        }
+        if(txProducto.getText().toString().isEmpty()){
+            txProducto.setError("Es necesario que sea un producto existente");
+            resp2=false;
+        }
+        if(txNombre.getText().toString().isEmpty()){
+            txNombre.setError("Es necesario un cliente registrado");
+            resp2=false;
+
+        }
+
+        return resp2;
+    }
+
+    private void GenerarVenta() {
+        if(validarOK()) {
+            String venta = "v1";
+            DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, HH:mm:ss");
+            String fecha = dateFormat.format(Calendar.getInstance().getTime());
+            int cantidad = Integer.parseInt(txCantidad.getEditText().getText().toString());
+            String codigoC = txCodigoC.getEditText().getText().toString();
+
+            if (validarOK()) {
+                final TiendaDB consultaBD = new TiendaDB(getApplicationContext());
+                consultaBD.agregarVENTAS(venta,
+                        txCodigo.getEditText().getText().toString(),txProducto.getText().toString()
+                        ,codigoC,txNombre.getText().toString(), fecha,cantidad);
+                Toast.makeText(getApplicationContext(), "REGISTRADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

@@ -31,66 +31,74 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="264dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txCodigo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/sanssemibold"
-                        android:hint="Codigo Producto" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/btnBuscar1"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="264dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_button2"
-                    android:fontFamily="@font/sanssemibold"
-                    android:onClick="procesar"
-                    android:text="Buscar" />
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/txCodigo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sanssemibold"
+                            android:hint="Codigo Producto" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnBuscar1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_button2"
+                        android:fontFamily="@font/sanssemibold"
+                        android:onClick="procesar"
+                        android:text="Buscar" />
+
+                </LinearLayout>
+
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/txProducto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sanssemibold"
+                android:hint="Producto" />
+
+            <TextView
+                android:id="@+id/txStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sanssemibold"
+                android:hint="Stock"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/txPrecio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sanssemibold"
+                android:hint="Precio"
+                android:inputType="number|numberDecimal" />
+
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/txPrecio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sanssemibold"
-            android:hint="Precio"
-            android:inputType="number|numberDecimal" />
-
-        <TextView
-            android:id="@+id/txProducto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sanssemibold"
-            android:hint="Producto" />
-
-        <TextView
-            android:id="@+id/txStock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sanssemibold"
-            android:hint="Stock"
-            android:inputType="number" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,6 +160,17 @@
                 android:fontFamily="@font/sanssemibold"
                 android:hint="Nombre" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txCantidad"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cantidad" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         </LinearLayout>
 
@@ -164,7 +183,7 @@
         android:layout_gravity="center">
 
         <Button
-            android:id="@+id/btnEditar"
+            android:id="@+id/btnAgregar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
@@ -172,7 +191,7 @@
             android:background="@drawable/custom_button2"
             android:fontFamily="@font/sanssemibold"
             android:onClick="procesar"
-            android:text="Editar" />
+            android:text="Agregar" />
 
         <Button
             android:id="@+id/btnEliminar"
