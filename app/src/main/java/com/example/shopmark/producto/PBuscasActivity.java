@@ -88,9 +88,6 @@ public class PBuscasActivity extends AppCompatActivity{
         }
     }
 
-
-
-
     public void BuscarProducto() {
         if(validarEliminarBuscar()) {
             final TiendaDB productoDB = new TiendaDB(getApplicationContext());

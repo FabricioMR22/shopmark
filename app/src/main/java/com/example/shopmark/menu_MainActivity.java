@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.shopmark.cliente.menuClienteActivity;
 import com.example.shopmark.producto.menuProductoActivity;
+import com.example.shopmark.ventas.ventas_MainActivity;
 
 public class menu_MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class menu_MainActivity extends AppCompatActivity {
     }
 
     public void goToBuy(View view){
-        Intent IrALogin = new Intent(this,buy_MainActivity.class);
+        Intent IrALogin = new Intent(this, ventas_MainActivity.class);
         startActivity(IrALogin);
     }
 
