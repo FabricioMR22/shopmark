@@ -29,7 +29,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:background="#66B300"
-                app:srcCompat="@drawable/ic_usuario" />
+                app:srcCompat="@drawable/usuario2" />
 
             <LinearLayout
                 android:layout_width="match_parent"

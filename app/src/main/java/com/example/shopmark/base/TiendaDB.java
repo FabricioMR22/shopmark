@@ -48,8 +48,6 @@ public class TiendaDB extends SQLiteOpenHelper {
     //CLIENTES INICIAL
 
     public void agregarClientes(String codigo, String dni,String nombre, String apellido, String correo, String password) {
-        //agregado abajo
-
         SQLiteDatabase bd1 = getReadableDatabase();
         Cursor cursor = bd1.rawQuery("SELECT CODIGO FROM CLIENTES WHERE CODIGO=(SELECT MAX(CODIGO) FROM CLIENTES)", null);
         String num="";
@@ -58,18 +56,13 @@ public class TiendaDB extends SQLiteOpenHelper {
                 num=cursor.getString(0);
 
             } while (cursor.moveToNext());
-
-
         }
-
 
         /*Algoritmo para autogeneral el código*/
         if(num.equals("")){
             num="C00001";
         }else{
             String sql_new1 = num;
-
-
 
             //agregado abajo
             String[] digito = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -130,8 +123,6 @@ public class TiendaDB extends SQLiteOpenHelper {
             }
         }
 
-
-
             SQLiteDatabase bd = getWritableDatabase();
             if (bd != null) {
 // no funciona  bd.execSQL("INSERT INTO CLIENTES VALUES('" + num + "','" + dni+ "','" + nombre+ "','" + apellido + "','" + correo + "',AES_ENCRYPT('" + password + "','2022'))");
@@ -140,11 +131,8 @@ public class TiendaDB extends SQLiteOpenHelper {
 //            String clave="hola";
 //            bd.execSQL("INSERT INTO CLIENTES(CODIGO,DNI,NOMBRE,APELLIDO,CORREO,PASSWORD)"+
 //                    "VALUES('" + num + "','" + dni+ "','" + nombre+ "','" + apellido + "','" + correo + "', AES_ENCRYPT('"+ password +"','"+ password +"'))");
-
                 bd.close();
             }
-
-
     }
 
     public List<ClienteModelo> mostrarClientes() {
@@ -171,45 +159,31 @@ public class TiendaDB extends SQLiteOpenHelper {
                 clientes.setApellido(cursor.getString(3));
                 clientes.setCorreo(cursor.getString(4));
                 clientes.setPassword(cursor.getString(5));
-
             } while (cursor.moveToNext());
-
         }
-
     }
 
     public void buscarUsuario(ClienteModelo clientes, String correo, String password) {
         SQLiteDatabase bd = getReadableDatabase();
         Cursor cursor = bd.rawQuery("SELECT * FROM CLIENTES WHERE CORREO='"+correo+"' AND PASSWORD='"+password+"'", null);
-
-
         if (cursor.moveToFirst()) {
             do {
                 clientes.setCodigo(cursor.getString(0));
-
-
             } while (cursor.moveToNext());
-
         }
-
     }
 
 
     public void editarClientes(String codigo, String dni,String nombre, String apellido, String correo, String password) {
-
         SQLiteDatabase bd = getWritableDatabase();
         if (bd != null) {
 //            bd.execSQL("UPDATE CLIENTES SET DNI='" + dni + "', NOMBRE='" + nombre + "',APELLIDO='" + apellido + "',CORREO='" + correo + "',PASSWORD=AES_ENCRYPT('" +password+ "','2022') WHERE CODIGO='" + codigo + "'");
             bd.execSQL("UPDATE CLIENTES SET DNI='" + dni + "', NOMBRE='" + nombre + "',APELLIDO='" + apellido + "',CORREO='" + correo + "',PASSWORD='" +password+ "' WHERE CODIGO='" + codigo + "'");
-
             bd.close();
-
-
         }
     }
 
     public void eliminarClientes(String codigo) {
-
         SQLiteDatabase bd = getWritableDatabase();
         if (bd != null) {
             bd.execSQL("DELETE FROM CLIENTES WHERE CODIGO='" + codigo + "'");
@@ -220,7 +194,6 @@ public class TiendaDB extends SQLiteOpenHelper {
     public void buscarCorreo(ClienteModelo clientes,String correo) {
         SQLiteDatabase bd = getReadableDatabase();
         Cursor cursor = bd.rawQuery("SELECT * FROM CLIENTES WHERE CORREO='"+correo+"'", null);
-
         if (cursor.moveToFirst()) {
             do {
                 clientes.setCorreo(cursor.getString(4));
@@ -247,7 +220,6 @@ public class TiendaDB extends SQLiteOpenHelper {
                 num=cursor.getString(0);
 
             } while (cursor.moveToNext());
-
 
         }
 
@@ -346,16 +318,12 @@ public class TiendaDB extends SQLiteOpenHelper {
                 productos.setStock(cursor.getInt(2));
                 productos.setPrecio(cursor.getDouble(3));
 
-
             } while (cursor.moveToNext());
-
         }
-
     }
 
 
     public void editarProductos(String codigo, String producto,int stock, double precio) {
-
         SQLiteDatabase bd = getWritableDatabase();
         if (bd != null) {
             bd.execSQL("UPDATE PRODUCTOS SET PRODUCTO='" + producto + "', STOCK='" + stock + "',PRECIO='" + precio + "' WHERE CODIGO='" + codigo + "'");
@@ -364,7 +332,6 @@ public class TiendaDB extends SQLiteOpenHelper {
     }
 
     public void eliminarProductos(String codigo) {
-
         SQLiteDatabase bd = getWritableDatabase();
         if (bd != null) {
             bd.execSQL("DELETE FROM PRODUCTOS WHERE CODIGO='" + codigo + "'");

@@ -16,11 +16,13 @@ public class menuClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_cliente);
     }
     public void procesar(View v){
-         if(v.getId()==R.id.btnProductos){
+         if(v.getId()==R.id.btnClientes){
             PantallaConsultas();
         }else if(v.getId()==R.id.btnBuscar){
             PantallaBuscar();
-        }
+        }else if(v.getId()==R.id.btnNuevoCliente) {
+             PantallaRegistrar();
+         }
     }
 
     private void PantallaConsultas() {
@@ -35,5 +37,11 @@ public class menuClienteActivity extends AppCompatActivity {
     private void PantallaBuscar() {
         Intent BuscarConsulta=new Intent(menuClienteActivity.this, CBuscasActivity.class);
         startActivity(BuscarConsulta);
+    }
+
+
+    private void PantallaRegistrar() {
+        Intent RegistrarCliente=new Intent(menuClienteActivity.this, register_MainActivity.class);
+        startActivity(RegistrarCliente);
     }
 }

@@ -16,9 +16,9 @@ public class menuProductoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_producto);
     }
     public void procesar(View v){
-        if(v.getId()==R.id.btnNewProducto){
+        if(v.getId()==R.id.btnRegist){
             PantallaNewConsulta();
-        }else if(v.getId()==R.id.btnProductos){
+        }else if(v.getId()==R.id.btnClientes){
             PantallaConsultas();
         }else if(v.getId()==R.id.btnBuscar){
             PantallaBuscar();
@@ -30,15 +30,18 @@ public class menuProductoActivity extends AppCompatActivity {
             Intent mostrarConsultas=new Intent(getApplicationContext(), ProductosActivity.class);
             startActivity(mostrarConsultas);
 
+
     }
 
     private void PantallaNewConsulta() {
         Intent NewConsulta=new Intent(menuProductoActivity.this, RegistroProducto.class);
         startActivity(NewConsulta);
+
     }
 
     private void PantallaBuscar() {
         Intent BuscarConsulta=new Intent(menuProductoActivity.this, PBuscasActivity.class);
         startActivity(BuscarConsulta);
+
     }
 }

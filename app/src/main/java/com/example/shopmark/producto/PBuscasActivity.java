@@ -54,23 +54,37 @@ public class PBuscasActivity extends AppCompatActivity{
             EditarProducto();
         } else if (v.getId() == R.id.btnEliminar) {
             EliminarProducto();
-        }else if (v.getId() == R.id.btnnProductos) {
-            MostrarProducto();
         }
     }
     private void EditarProducto() {
-        if(validarOK()) {
+        if(validarEditar()) {
             final TiendaDB productoDB = new TiendaDB(getApplicationContext());
-            productoDB.editarProductos(txCodigo.getEditText().getText().toString(), txProducto.getEditText().getText().toString(),
-                    Integer.parseInt(txStock.getEditText().getText().toString()), Double.parseDouble(txPrecio.getEditText().getText().toString()));
-            Toast.makeText(getApplicationContext(), "DATOS MOFICADOS", Toast.LENGTH_SHORT).show();
+
+            ProductoModelo productos = new ProductoModelo();
+            productoDB.buscarProductos(productos, txCodigo.getEditText().getText().toString());
+
+            if (productos.getProducto() == null) {
+                Toast.makeText(getApplicationContext(), "PRODUCTO NO ENCONTRADO", Toast.LENGTH_SHORT).show();
+            }else {
+                productoDB.editarProductos(txCodigo.getEditText().getText().toString(), txProducto.getEditText().getText().toString(),
+                        Integer.parseInt(txStock.getEditText().getText().toString()), Double.parseDouble(txPrecio.getEditText().getText().toString()));
+                Toast.makeText(getApplicationContext(), "PRODUCTO MOFICADO", Toast.LENGTH_SHORT).show();
+            }
         }
     }
     private void EliminarProducto() {
-        if(validarOK()) {
+        if(validarEliminarBuscar()) {
             final TiendaDB productoDB = new TiendaDB(getApplicationContext());
-            productoDB.eliminarProductos(txCodigo.getEditText().getText().toString());
-            Toast.makeText(getApplicationContext(), "DATOS ELIMINADOS", Toast.LENGTH_SHORT).show();
+            ProductoModelo productos = new ProductoModelo();
+            productoDB.buscarProductos(productos, txCodigo.getEditText().getText().toString());
+
+            if (productos.getProducto() == null) {
+                Toast.makeText(getApplicationContext(), "PRODUCTO NO ENCONTRADO", Toast.LENGTH_SHORT).show();
+            }else{
+                productoDB.eliminarProductos(txCodigo.getEditText().getText().toString());
+                Toast.makeText(getApplicationContext(), "PRODUCTO ELIMINADO", Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }
     }
 
@@ -78,7 +92,7 @@ public class PBuscasActivity extends AppCompatActivity{
 
 
     public void BuscarProducto() {
-        if(validarOK()) {
+        if(validarEliminarBuscar()) {
             final TiendaDB productoDB = new TiendaDB(getApplicationContext());
             ProductoModelo productos = new ProductoModelo();
 
@@ -89,19 +103,37 @@ public class PBuscasActivity extends AppCompatActivity{
             txPrecio.getEditText().setText(""+productos.getPrecio());
 
             if (productos.getProducto() == null) {
-                Toast.makeText(getApplicationContext(), "REGISTRO NO ENCONTRADO", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "PRODUCTO NO ENCONTRADO", Toast.LENGTH_SHORT).show();
             }
         }
 
     }
 
-    private void MostrarProducto() {
-        Intent mostrasProductos=new Intent(getApplicationContext(), ProductosActivity.class);
-        startActivity(mostrasProductos);
+
+    private boolean validarEditar() {
+        boolean resp2=true;
+
+        if(txCodigo.getEditText().getText().toString().isEmpty()){
+            txCodigo.setError("Es necesario ingresar un código");
+            resp2=false;
+        }
+        if(txProducto.getEditText().getText().toString().isEmpty()){
+            txProducto.setError("Es necesario ingresar un nombre");
+            resp2=false;
+        }
+        if(txStock.getEditText().getText().toString().isEmpty()){
+            txStock.setError("Es necesario ingresar una cantidad");
+            resp2=false;
+        }
+        if(txPrecio.getEditText().getText().toString().isEmpty()){
+            txPrecio.setError("Es necesario ingresar un precio");
+            resp2=false;
+        }
+
+        return resp2;
     }
 
-
-    private boolean validarOK() {
+    private boolean validarEliminarBuscar() {
         boolean resp2=true;
 
         if(txCodigo.getEditText().getText().toString().isEmpty()){

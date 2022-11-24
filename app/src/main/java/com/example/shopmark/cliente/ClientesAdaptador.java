@@ -1,5 +1,6 @@
 package com.example.shopmark.cliente;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -74,6 +75,7 @@ public class ClientesAdaptador extends RecyclerView.Adapter<ClientesAdaptador.Vi
             Toast.makeText(context, "DATOS ELIMINADOS", Toast.LENGTH_SHORT).show();
             Intent mostrarConsultas=new Intent(context, ClientesActivity.class);
             context.startActivity(mostrarConsultas);
+            ((Activity) context).finish();
         }
     }
     public List<ClienteModelo> clienteLista;

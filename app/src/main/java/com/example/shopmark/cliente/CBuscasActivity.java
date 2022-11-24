@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.shopmark.Modelo.ClienteModelo;
 import com.example.shopmark.R;
 import com.example.shopmark.base.TiendaDB;
+import com.example.shopmark.producto.ProductosActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class CBuscasActivity extends AppCompatActivity {
@@ -61,25 +62,38 @@ public class CBuscasActivity extends AppCompatActivity {
             EditarCliente();
         } else if (v.getId() == R.id.btnEliminar) {
             EliminarCliente();
-        }else if (v.getId() == R.id.btnnClientes) {
-            MostrarCliente();
         }
     }
     private void EditarCliente() {
-        if(validarOK()) {
+        if(validarEditar()) {
             final TiendaDB clienteDB = new TiendaDB(getApplicationContext());
-            clienteDB.editarClientes(txCodigo.getEditText().getText().toString(), txDNI.getEditText().getText().toString(),txNombre.getEditText().getText().toString(),
-                    txApellido.getEditText().getText().toString(), txCorreo.getEditText().getText().toString(),
-                    txPassword.getEditText().getText().toString());
+            ClienteModelo clientes = new ClienteModelo();
+            clienteDB.buscarClientes(clientes, txCodigo.getEditText().getText().toString());
 
-            Toast.makeText(getApplicationContext(), "DATOS MOFICADOS", Toast.LENGTH_SHORT).show();
+            if (clientes.getNombre() == null) {
+                Toast.makeText(getApplicationContext(), "REGISTRO NO ENCONTRADO", Toast.LENGTH_SHORT).show();
+            }else {
+                clienteDB.editarClientes(txCodigo.getEditText().getText().toString(), txDNI.getEditText().getText().toString(), txNombre.getEditText().getText().toString(),
+                        txApellido.getEditText().getText().toString(), txCorreo.getEditText().getText().toString(),
+                        txPassword.getEditText().getText().toString());
+
+                Toast.makeText(getApplicationContext(), "DATOS MOFICADOS", Toast.LENGTH_SHORT).show();
+            }
         }
     }
     private void EliminarCliente() {
-        if(validarOK()) {
-            final TiendaDB consultaBD = new TiendaDB(getApplicationContext());
-            consultaBD.eliminarClientes(txCodigo.getEditText().getText().toString());
-            Toast.makeText(getApplicationContext(), "DATOS ELIMINADOS", Toast.LENGTH_SHORT).show();
+        if(validarEliminarBuscar()) {
+            final TiendaDB clienteDB = new TiendaDB(getApplicationContext());
+            ClienteModelo clientes = new ClienteModelo();
+            clienteDB.buscarClientes(clientes, txCodigo.getEditText().getText().toString());
+
+            if (clientes.getNombre() == null) {
+                Toast.makeText(getApplicationContext(), "REGISTRO NO ENCONTRADO", Toast.LENGTH_SHORT).show();
+            }else{
+                clienteDB.eliminarClientes(txCodigo.getEditText().getText().toString());
+                Toast.makeText(getApplicationContext(), "DATOS ELIMINADOS", Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }
     }
 
@@ -87,7 +101,7 @@ public class CBuscasActivity extends AppCompatActivity {
 
 
     public void BuscarCliente() {
-        if(validarOK()) {
+        if(validarEliminarBuscar()) {
             final TiendaDB clienteDB = new TiendaDB(getApplicationContext());
             ClienteModelo clientes = new ClienteModelo();
 
@@ -106,16 +120,40 @@ public class CBuscasActivity extends AppCompatActivity {
 
     }
 
-    private void MostrarCliente() {
-        Intent mostrarConsultas=new Intent(getApplicationContext(), ClientesActivity.class);
-        startActivity(mostrarConsultas);
+
+
+
+    private boolean validarEditar() {
+        boolean resp2=true;
+
+        if(txCodigo.getEditText().getText().toString().isEmpty()){
+            txCodigo.setError("Es necesario ingresar un código");
+            resp2=false;
+        }
+        if(txDNI.getEditText().getText().toString().isEmpty()){
+            txDNI.setError("Es necesario ingresar un DNI");
+            resp2=false;
+        }
+        if(txNombre.getEditText().getText().toString().isEmpty()){
+            txNombre.setError("Es necesario ingresar un nombre");
+            resp2=false;
+        }
+        if(txApellido.getEditText().getText().toString().isEmpty()){
+            txApellido.setError("Es necesario ingresar un apellido");
+            resp2=false;
+        }
+        if(txCorreo.getEditText().getText().toString().isEmpty()){
+            txCorreo.setError("Es necesario ingresar un apellido");
+            resp2=false;
+        }
+        if(txPassword.getEditText().getText().toString().isEmpty()){
+            txPassword.setError("Es necesario ingresar un password");
+            resp2=false;
+        }
+
+        return resp2;
     }
-
-
-
-
-
-    private boolean validarOK() {
+    private boolean validarEliminarBuscar() {
         boolean resp2=true;
 
         if(txCodigo.getEditText().getText().toString().isEmpty()){
