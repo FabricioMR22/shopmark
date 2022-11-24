@@ -15,23 +15,6 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="56dp"
-                android:layout_height="49dp"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"
-                android:onClick="retroceder"
-                android:paddingStart="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_baseline_exit_to_app_24" />/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"

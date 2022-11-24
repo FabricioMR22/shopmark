@@ -27,6 +27,21 @@ public class ProductosActivity extends AppCompatActivity {
         recyclerViewConsulta.setAdapter(adaptadorConsulta);
 
 
+
+
+    }
+    @Override
+    public void onResume() {
+
+        recyclerViewConsulta = (RecyclerView) findViewById(R.id.recyclerConsulta);
+        recyclerViewConsulta.setLayoutManager(new LinearLayoutManager(this));
+
+        TiendaDB productoDB = new TiendaDB(getApplicationContext());
+
+        adaptadorConsulta = new ProductosAdaptador(productoDB.mostrarProductos());
+        recyclerViewConsulta.setAdapter(adaptadorConsulta);
+        super.onResume();
+
     }
 
 

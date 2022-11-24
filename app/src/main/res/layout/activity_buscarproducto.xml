@@ -60,6 +60,7 @@
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:background="@drawable/custom_button2"
+                android:fontFamily="@font/sanssemibold"
                 android:onClick="procesar"
                 android:text="Buscar" />
         </LinearLayout>
@@ -104,8 +105,9 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <Button
             android:id="@+id/btnEditar"
@@ -114,18 +116,9 @@
             android:layout_margin="3dp"
             android:layout_weight="1"
             android:background="@drawable/custom_button2"
+            android:fontFamily="@font/sanssemibold"
             android:onClick="procesar"
             android:text="Editar" />
-
-        <Button
-            android:id="@+id/btnnProductos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:background="@drawable/custom_button3"
-            android:onClick="procesar"
-            android:text="Productos" />
 
         <Button
             android:id="@+id/btnEliminar"
@@ -133,7 +126,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:layout_weight="1"
-            android:background="@drawable/custom_button2"
+            android:background="@drawable/custom_button3"
+            android:fontFamily="@font/sanssemibold"
             android:onClick="procesar"
             android:text="Eliminar" />
     </LinearLayout>

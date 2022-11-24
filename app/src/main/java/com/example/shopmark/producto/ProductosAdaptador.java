@@ -1,5 +1,6 @@
 package com.example.shopmark.producto;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -68,8 +69,10 @@ public class ProductosAdaptador extends RecyclerView.Adapter<ProductosAdaptador.
             final TiendaDB productoDB = new TiendaDB(context);
             productoDB.eliminarProductos(codigoB);
             Toast.makeText(context, "DATOS ELIMINADOS", Toast.LENGTH_SHORT).show();
+
             Intent mostrarProductos=new Intent(context, ProductosActivity.class);
             context.startActivity(mostrarProductos);
+            ((Activity) context).finish();
         }
     }
     public List<ProductoModelo> productoLista;

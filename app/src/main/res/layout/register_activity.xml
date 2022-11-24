@@ -83,6 +83,7 @@
             android:ems="15"
             android:fontFamily="@font/sanssemibold"
             android:hint="Correo"
+            android:inputType="textEmailAddress"
             android:padding="12dp" />
 
         <EditText
@@ -91,13 +92,13 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:background="@drawable/custom_input"
-            android:drawableStart="@drawable/ic_usuario"
+            android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="10dp"
             android:ems="15"
             android:fontFamily="@font/sanssemibold"
             android:hint="Password"
-            android:password="true"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:password="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -116,15 +117,6 @@
             android:onClick="procesar"
             android:text="ENVIAR"
             app:backgroundTint="@null" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="@drawable/custom_button3"
-            android:onClick="goToLog"
-            android:text="RETROCEDER" />
 
     </LinearLayout>
 </LinearLayout>

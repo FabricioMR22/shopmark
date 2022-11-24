@@ -60,27 +60,24 @@ public class RegistroProducto extends AppCompatActivity{
 
 
     private void GenerarProducto() {
-        String producto="";
-        int stock=Integer.parseInt(txtStock.getEditText().getText().toString());
-        double precio=Double.parseDouble(txtPrecio.getEditText().getText().toString());
         if(validarOK()) {
-            final TiendaDB consultaBD = new TiendaDB(getApplicationContext());
-            consultaBD.agregarProductos(producto.toString(), txtProducto.getEditText().getText().toString(), stock,precio);
-            Toast.makeText(getApplicationContext(), "REGISTRADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+            String producto = "p1";
+            int stock = Integer.parseInt(txtStock.getEditText().getText().toString());
+            double precio = Double.parseDouble(txtPrecio.getEditText().getText().toString());
+            if (validarOK()) {
+                final TiendaDB consultaBD = new TiendaDB(getApplicationContext());
+                consultaBD.agregarProductos(producto.toString(), txtProducto.getEditText().getText().toString(), stock, precio);
+                Toast.makeText(getApplicationContext(), "REGISTRADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     private void MostrarProducto() {
         Intent mostrarProductos=new Intent(getApplicationContext(), ProductosActivity.class);
         startActivity(mostrarProductos);
+        finish();
     }
 
 
-
-
-    public void retroceder(View view){
-        Intent retroceder = new Intent(this, menuProductoActivity.class);
-        startActivity(retroceder);
-    }
 
 }
