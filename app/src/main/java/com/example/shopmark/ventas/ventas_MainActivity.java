@@ -137,6 +137,23 @@ public class ventas_MainActivity extends AppCompatActivity {
                         ,codigoC,txNombre.getText().toString(), fecha,cantidad);
                 Toast.makeText(getApplicationContext(), "REGISTRADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
             }
+            if(validarOK()){
+                final TiendaDB productoDB = new TiendaDB(getApplicationContext());
+
+                ProductoModelo productos = new ProductoModelo();
+                productoDB.buscarProductos(productos, txCodigo.getEditText().getText().toString());
+
+                if (productos.getProducto() == null) {
+                    Toast.makeText(getApplicationContext(), "PRODUCTO NO ENCONTRADO", Toast.LENGTH_SHORT).show();
+                }else {
+                    Integer nuevoStock = Integer.parseInt(txStock.getText().toString()) - cantidad;
+                    productoDB.editarProductos(txCodigo.getEditText().getText().toString(),
+                            txProducto.getText().toString(),
+                            nuevoStock,
+                            Double.parseDouble(txPrecio.getText().toString()));
+                    Toast.makeText(getApplicationContext(), "PRODUCTO RESTADO", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 
