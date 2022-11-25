@@ -15,12 +15,14 @@ import com.example.shopmark.base.TiendaDB;
 import com.example.shopmark.menu_MainActivity;
 import com.example.shopmark.producto.ProductosActivity;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 
-public class RegistroProducto extends AppCompatActivity /*implements View.OnClickListener*/{
+public class RegistroProducto extends AppCompatActivity implements View.OnClickListener{
     TextInputLayout txtProducto, txtStock, txtPrecio;
-    //ImageView ivCodigQR;
-    //Button btnGenera;
+    ImageView ivCodigQR;
+    Button btnGenera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,30 +32,28 @@ public class RegistroProducto extends AppCompatActivity /*implements View.OnClic
     }
 
     private void enlazarControles() {
-        txtProducto=(TextInputLayout)findViewById(R.id.txtProducto);
-        txtStock=(TextInputLayout)findViewById(R.id.txtStock);
-        txtPrecio=(TextInputLayout) findViewById(R.id.txtCosto);
+        txtProducto = (TextInputLayout) findViewById(R.id.txtProducto);
+        txtStock = (TextInputLayout) findViewById(R.id.txtStock);
+        txtPrecio = (TextInputLayout) findViewById(R.id.txtCosto);
 
-       // ivCodigQR = (ImageView) findViewById(R.id.ivCodigoQR);
-       // btnGenera = (Button) findViewById(R.id.btnGenerar);
-       // btnGenera.setOnClickListener(this);
+        ivCodigQR = (ImageView) findViewById(R.id.ivCodigQR2);
+        btnGenera = (Button) findViewById(R.id.btnGenera);
+        btnGenera.setOnClickListener(this);
     }
 
-   /* @Override
+    @Override
     public void onClick(View view) {
-        try{
+        try {
             BarcodeEncoder barcoderEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcoderEncoder.encodeBitmap(
-                    txtProducto.getEditText().getText().toString().BarcodeFormat.QR_CODE,
+                    txtProducto.getEditText().getText().toString(), BarcodeFormat.QR_CODE,
                     300, 300
             );
             ivCodigQR.setImageBitmap(bitmap);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
-    
-    
+    }
     public void procesar(View v){
         if(v.getId()==R.id.btnGuardar){
             GenerarProducto();
