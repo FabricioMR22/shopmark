@@ -15,8 +15,7 @@ import com.example.shopmark.base.TiendaDB;
 import com.example.shopmark.menu_MainActivity;
 import com.example.shopmark.producto.ProductosActivity;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.zxing.BarcodeFormat;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
+
 
 public class RegistroProducto extends AppCompatActivity /*implements View.OnClickListener*/{
     TextInputLayout txtProducto, txtStock, txtPrecio;

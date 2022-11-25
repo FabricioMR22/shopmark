@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ventas.ventas_MainActivity">
+    tools:context=".ventas.ventas_MainActivity"
+    android:background="#66B300">
 
     <TextView
         android:id="@+id/textView8"
@@ -15,7 +16,7 @@
         android:fontFamily="@font/sanssemibold"
         android:gravity="center"
 
-        android:text="VENTA"
+        android:text="REALIZAR VENTA"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/button20"
@@ -25,150 +26,207 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_weight="0.2"
-        android:orientation="vertical">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="3"
+            android:layout_marginVertical="20dp"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1.4"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="13dp"
+                >
 
-                <LinearLayout
-                    android:layout_width="264dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/txCodigo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/sanssemibold"
-                            android:hint="Codigo Producto" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/txProducto"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sanssemibold"
+                    android:hint="Producto"
+                    android:textSize="23dp"
+                    android:gravity="center"
+                    android:layout_marginVertical="5dp"/>
 
-                    <Button
-                        android:id="@+id/btnBuscar1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/custom_button2"
-                        android:fontFamily="@font/sanssemibold"
-                        android:onClick="procesar"
-                        android:text="Buscar" />
+                <TextView
+                    android:id="@+id/txStock"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sanssemibold"
+                    android:hint="Stock"
+                    android:inputType="number"
+                    android:textSize="23dp"
+                    android:gravity="center"/>
 
-                </LinearLayout>
-
+                <TextView
+                    android:id="@+id/txPrecio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sanssemibold"
+                    android:hint="Precio"
+                    android:inputType="number|numberDecimal"
+                    android:textSize="23dp"
+                    android:gravity="center"/>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/txProducto"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sanssemibold"
-                android:hint="Producto" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginBottom="100dp"
+                android:padding="10dp">
 
-            <TextView
-                android:id="@+id/txStock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sanssemibold"
-                android:hint="Stock"
-                android:inputType="number" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txCodigo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-            <TextView
-                android:id="@+id/txPrecio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sanssemibold"
-                android:hint="Precio"
-                android:inputType="number|numberDecimal" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_input"
+                        android:fontFamily="@font/sanssemibold"
+                        android:hint="Codigo Producto"
+                        android:padding="12dp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnBuscar1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button2"
+                    android:fontFamily="@font/sanssemibold"
+                    android:onClick="procesar"
+                    android:text="Buscar"
+                    android:layout_marginVertical="5dp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="3">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_margin="6dp">
 
                 <LinearLayout
-                    android:layout_width="264dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginRight="10dp"
+                    >
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/txCodigoC"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        >
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/custom_input"
                             android:fontFamily="@font/sanssemibold"
-                            android:hint="Codigo Cliente" />
+                            android:hint="    Codigo Cliente" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.3"
+                    android:orientation="horizontal"
+                    >
 
                     <Button
                         android:id="@+id/btnBuscar2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
                         android:background="@drawable/custom_button2"
                         android:fontFamily="@font/sanssemibold"
                         android:onClick="procesar"
-                        android:text="Buscar" />
+                        android:text="Buscar"
+                        android:layout_marginVertical="15dp"/>
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/txDNI"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sanssemibold"
-                android:hint="DNI" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_marginVertical="20dp">
 
-            <TextView
-                android:id="@+id/txNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sanssemibold"
-                android:hint="Nombre" />
+                <TextView
+                    android:id="@+id/txDNI"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sanssemibold"
+                    android:hint="DNI"
+                    android:textSize="23dp"
+                    android:gravity="center"
+                    android:layout_marginVertical="5dp"/>
+
+                <TextView
+                    android:id="@+id/txNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sanssemibold"
+                    android:hint="Nombre"
+                    android:textSize="23dp"
+                    android:gravity="center"
+                    android:layout_marginVertical="5dp"/>
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txCantidad"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="58dp"
+                android:padding="5dp"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Cantidad" />
+                    android:layout_height="match_parent"
+                    android:hint="Cantidad"
+                    android:background="@drawable/custom_input"
+                    android:fontFamily="@font/sanssemibold"
+                    android:padding="12dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -180,12 +238,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_margin="6dp">
 
         <Button
             android:id="@+id/btnAgregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:layout_weight="1"
             android:background="@drawable/custom_button2"
@@ -195,8 +254,8 @@
 
         <Button
             android:id="@+id/btnVentas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:layout_weight="1"
             android:onClick="procesar"
@@ -204,5 +263,10 @@
             android:fontFamily="@font/sanssemibold"
             android:text="REGISTRO VENTAS" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>
