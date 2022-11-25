@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#66B300"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".producto.RegistroProducto">
 
     <LinearLayout
@@ -74,7 +75,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/ivCodigQR"
+            android:id="@+id/ivCodigQR2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
